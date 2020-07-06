@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0d1118 !important;
+    color: #dcdcdc !important;
+}
+
+.container-a{
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-b{
+    width: 90%;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-outline-secondary{
+    border-radius: 0 !important;
+    font-weight: bold;
+    font-family: 'Ubuntu';
+}
+
+.btn-outline-secondary:hover{
+    color: #151c26;
+    background: #dcdcdc;
+    border-radius: #dcdcdc;
+}
+
+.popularity{
+    font-size: 1.3rem;
+    color: goldenrod;
+}
+
+.rating{
+    font-size: 1.5rem;
+    color: #dcdcdc;
+}
+
+.fa-arrow-alt-circle-right{
+    color: #dcdcdc;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.text{
+    font-family: 'Ubuntu';
+    color: #dcdcdc;
+}
+
+.release_date{
+    font-size: 1.3rem;
+    font-style: italic;
+    color: gray;
+}
