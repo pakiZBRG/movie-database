@@ -1,0 +1,7 @@
+export { default as AboutMe } from './AboutMe'
+export { default as Carousel } from './Carousel'
+export { default as Genres } from './Genres'
+export { default as MovieCard } from './MovieCard'
+export { default as MovieSearch } from './MovieSearch'
+export { default as TopRatedMovies } from './TopRatedMovies'
+export { default as TrendingPeople } from './TrendingPeople'

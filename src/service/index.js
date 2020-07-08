@@ -70,8 +70,6 @@ export const fetchMovieByGenre = async (genre_id) => {
             }
         })
 
-        console.log(data)
-
         const posterUrl = 'https://image.tmdb.org/t/p/original/'
         const modifiedData = data['results'].map(d => ({
             id: d['id'],
@@ -149,8 +147,6 @@ export const fetchMovieDetail = async (id) => {
                 language: 'en_US'
             }
         })
-
-        console.log(data)
         
         return data
     } catch(err){
