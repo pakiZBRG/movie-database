@@ -67,7 +67,7 @@ export default function MovieSpec({params}) {
                     </div>
                     <div className='mt-4'>
                         <p className='name'>POPULARITY: 
-                        <span className='popularity'>{popularity}</span></p>
+                        <span className='popularity'> {popularity}</span></p>
                     </div>
                     <div className='mt-4'>
                         <p className='name'>RUN TIME: 
