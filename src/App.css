@@ -64,17 +64,16 @@ body{
 .form{
     display: flex;
     justify-content: center;
-    padding: 3rem 0;
 }
 
 .inputMovie{
     background: transparent;
     border: none;
-    width: 40%;
+    width: 100%;
     color: #a1a1a1;
     font-family: 'Ubuntu' !important;
     border-bottom: 1.5px solid #a1a1a1;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .searchBtn{
@@ -85,4 +84,13 @@ body{
 
 .searchBtn:focus{
     outline: none
+}
+
+.inlarge{
+    color: #dcdcdc;
+    font-size: 1.2rem;
+}
+
+.navbar{
+    background-color: #333;
 }

@@ -11,7 +11,7 @@ export default function MovieSpec({params}) {
         fetchAPI()
     }, [params.id])
 
-    const {title, vote_average, overview, runtime, revenue, budget, homepage, release_date, } = detail
+    const {title, vote_average, overview, runtime, revenue, budget, homepage, release_date } = detail
     const box_office = revenue - budget;
     genres = detail.genres
 
@@ -27,6 +27,10 @@ export default function MovieSpec({params}) {
                 </li>
             )
         })
+    }
+
+    function numberWithDotts(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
     return(
@@ -63,12 +67,12 @@ export default function MovieSpec({params}) {
                     </div>
                     <div className='mt-4'>
                         <p style={{ color: '#5a606b', fontWeight: 'bold'}}>RUN TIME: 
-                            <span style={{ color: '#dcdcdc'}}> {runtime} min</span>
+                            <span className='inlarge'> {runtime} min</span>
                         </p>
                     </div>
                     <div className='mt-4'>
                         <p style={{ color: '#5a606b', fontWeight: 'bold'}}>BUDGET: 
-                            <span style={{ color: '#dcdcdc'}}> {box_office === 0 ? 'unknown' : `${box_office}$`}</span>
+                            <span className='inlarge'> {box_office === 0 ? 'unknown' : `${numberWithDotts(box_office)}$`}</span>
                         </p>
                     </div>
                     <div className='mt-4'>

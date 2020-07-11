@@ -25,8 +25,11 @@ export default function MovieSearch(){
         <React.Fragment>
             <form onSubmit={SearchMovie} className='form'>
                 <input name='query' placeholder='Enter the movie name' className='inputMovie' value={query} onChange={(e) => setQuery(e.target.value)}/>
-                <button type='submit' className='searchBtn'><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button type='submit' className='searchBtn'>
+                    <i className="fa fa-search"></i>
+                </button>
             </form>
+            
             <div className='container-b mx-auto'>
                 <div className='row mt-3'>
                     {movies.filter(movie => (movie.poster_path && movie.vote_average)).map(m => {
