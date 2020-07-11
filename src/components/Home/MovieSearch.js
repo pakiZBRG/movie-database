@@ -24,7 +24,7 @@ export default function MovieSearch(){
     return(
         <React.Fragment>
             <form onSubmit={SearchMovie} className='form'>
-                <input name='query' placeholder='Enter the movie name' className='inputMovie' value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <input name='query' autocomplete="off" placeholder='Enter the movie name' className='inputMovie' value={query} onChange={(e) => setQuery(e.target.value)}/>
                 <button type='submit' className='searchBtn'>
                     <i className="fa fa-search"></i>
                 </button>
