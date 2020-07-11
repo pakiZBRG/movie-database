@@ -11,7 +11,7 @@ export default function MovieSpec({params}) {
         fetchAPI()
     }, [params.id])
 
-    const {title, vote_average, overview, runtime, revenue, budget, homepage, release_date } = detail
+    const {title, vote_average, overview, runtime, popularity, revenue, budget, homepage, release_date } = detail
     const box_office = revenue - budget;
     genres = detail.genres
 
@@ -66,17 +66,21 @@ export default function MovieSpec({params}) {
                         ></ReactStars>
                     </div>
                     <div className='mt-4'>
-                        <p style={{ color: '#5a606b', fontWeight: 'bold'}}>RUN TIME: 
+                        <p className='name'>POPULARITY: 
+                        <span className='popularity'>{popularity}</span></p>
+                    </div>
+                    <div className='mt-4'>
+                        <p className='name'>RUN TIME: 
                             <span className='inlarge'> {runtime} min</span>
                         </p>
                     </div>
                     <div className='mt-4'>
-                        <p style={{ color: '#5a606b', fontWeight: 'bold'}}>BUDGET: 
+                        <p className='name'>BUDGET: 
                             <span className='inlarge'> {box_office === 0 ? 'unknown' : `${numberWithDotts(box_office)}$`}</span>
                         </p>
                     </div>
                     <div className='mt-4'>
-                        <p style={{ color: '#5a606b', fontWeight: 'bold'}}>HOMEPAGE: 
+                        <p className='name'>HOMEPAGE: 
                             <a href={homepage} target='blank' style={{color: 'lightblue'}}>{title}</a>
                         </p>
                     </div>
