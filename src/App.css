@@ -82,7 +82,7 @@ body{
     border: none;
 }
 
-.searchBtn:focus{
+.searchBtn:focus, .inputMovie:focus{
     outline: none
 }
 
