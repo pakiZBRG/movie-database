@@ -11,14 +11,13 @@ export default function Casts({params}){
 
     const castList = casts.map((cast, i) => {
         const {name, character, img} = cast
-        if(img !== 'https://image.tmdb.org/t/p/original/null')
-            return (
-                <div className='col-lg-2 col-sm-4' key={i}>
-                    <img className='cast-img d-flex mx-auto' src={img} alt={name}/>
-                    <h5 className='text-center my-2'>{name}</h5>
-                    <p className='text-center text-secondary mb-4'>{character}</p>
-                </div>
-            )
+        return (
+            <div className='col-lg-2 col-sm-4' key={i}>
+                <img className='cast-img d-flex mx-auto' src={img} alt={name}/>
+                <h5 className='text-center my-2'>{name}</h5>
+                <p className='text-center text-secondary mb-4'>{character}</p>
+            </div>
+        )
     })
 
     return(
