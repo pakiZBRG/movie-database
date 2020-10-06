@@ -9,13 +9,13 @@ export default function TrendingPeople(){
         fetchAPI()
     })
 
-    const trendingPersons = persons.slice(0, 4).map((person, i) => {
+    const trendingPersons = persons.slice(0, 12).map((person, i) => {
         const {name, popularity, profileImg} = person
         return (
-            <div className='col-md-3' key={i}>
+            <div className='col-lg-2 col-md-3 col-sm-4' key={i}>
                 <img className='img-fluid d-flex mx-auto' src={profileImg} alt={name}/>
-                <p className='font-weight-bold text-center'>{name}</p>
-                <p className='font-weight-light text-center text-secondary'>
+                <h5 className='text-center my-2'>{name}</h5>
+                <p className='text-center text-secondary mb-5'>
                     Number of views: <span className='font-weight-bold'>{popularity}</span>
                 </p>
             </div>
@@ -24,11 +24,9 @@ export default function TrendingPeople(){
 
     return(
         <React.Fragment>
-            <div className='rom mt-5 mb-4'>
+            <div className='rom my-5'>
                 <div className='col'>
-                    <h3 className='text-center' style={{color: '#5a606b'}}>
-                        TRENDING PEOPLE OF THE WEEK
-                    </h3>
+                    <h2 className='text-center pt-4' style={{color: '#5a606b'}}>Trending people of the week</h2>
                 </div>
             </div>
             <div className='row mt-3 container-b d-flex mx-auto'>

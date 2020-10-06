@@ -11,7 +11,7 @@ export default function Carousel(){
         fetchAPI()
     }, [])
 
-    const movies = nowPlaying.slice(0, 7).map((item, i) => {
+    const movies = nowPlaying.map((item, i) => {
         const { id, poster, title } = item
         return (
             <div key={i}>

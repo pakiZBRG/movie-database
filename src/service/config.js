@@ -1,0 +1,9 @@
+export const apiKey = "0932d0db0d84d50a4a8557d977a7c2c6"
+export const url = "https://api.themoviedb.org/3"
+export const posterUrl = 'https://image.tmdb.org/t/p/original/'
+export const topRatedUrl = `${url}/movie/top_rated?api_key=${apiKey}&langauge=en_US`
+export const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&langauge=en_US&page=1`
+export const movieUrl = `${url}/movie`
+export const genreUrl = `${url}/genre/movie/list?api_key=${apiKey}&langauge=en_US&page=2`
+export const moviesUrl = `${url}/discover/movie?api_key=${apiKey}&langauge=en_US`
+export const personUrl = `${url}/trending/person/week?api_key=${apiKey}`

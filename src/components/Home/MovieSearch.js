@@ -15,7 +15,6 @@ export default function MovieSearch(){
         try{
             const {data: {results}} = await axios.get(url)
             setMovies(results)
-            console.log(results)
         } catch(err){
             console.log(err)
         }
@@ -23,8 +22,9 @@ export default function MovieSearch(){
 
     return(
         <React.Fragment>
+            <h2 className='text-center mt-5 mb-3' style={{color: "#5a686b"}}>Search Movie</h2>
             <form onSubmit={SearchMovie} className='form'>
-                <input name='query' autocomplete="off" placeholder='Enter the movie name' className='inputMovie' value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <input name='query' autoComplete="off" placeholder='Enter the movie name' className='inputMovie' value={query} onChange={(e) => setQuery(e.target.value)}/>
                 <button type='submit' className='searchBtn'>
                     <i className="fa fa-search"></i>
                 </button>

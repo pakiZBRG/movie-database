@@ -10,12 +10,12 @@ export default function RecommendationList({params}){
         fetchAPI()
     }, [params.id])
 
-    const recommendationList = recommendation.slice(0, 4).map(movie => <MovieCard movie={movie} key={movie.id}/>)
+    const recommendationList = recommendation.map(movie => <MovieCard movie={movie} key={movie.id}/>)
     return(
         <div className='container-b mx-auto'>
             <div className='row mt-4'>
-                <div className='col'>
-                    <p style={{color: '#5a606b', fontWeight: 'bold'}}>RECOMMENDATION</p>
+                <div className='col text-center my-3'>
+                    <h2 style={{color: '#5a606b', fontWeight: 'bold'}}>Recommendation</h2>
                 </div>
             </div>
             <div className='row mt-2'>

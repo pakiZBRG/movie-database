@@ -33,6 +33,9 @@ export default function MovieSpec({params}) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
+    const hours = parseInt(runtime/60);
+    const minutes = runtime%60;
+
     return(
         <div className='container-b mx-auto'>
             <div className='row mt-4'>
@@ -71,12 +74,12 @@ export default function MovieSpec({params}) {
                     </div>
                     <div className='mt-4'>
                         <p className='name'>RUN TIME: 
-                            <span className='inlarge'> {runtime} min</span>
+                            <span className='inlarge'> {hours ? `${hours}h` : null} {minutes}min</span>
                         </p>
                     </div>
                     <div className='mt-4'>
                         <p className='name'>BUDGET: 
-                            <span className='inlarge'> {box_office === 0 ? 'unknown' : `${numberWithDotts(box_office)}$`}</span>
+                            <span className='inlarge'> {box_office === 0 ? 'unknown' : `$${numberWithDotts(box_office)}`}</span>
                         </p>
                     </div>
                     <div className='mt-4'>

@@ -2,24 +2,17 @@ import axios from 'axios'
 
 const apiKey = "0932d0db0d84d50a4a8557d977a7c2c6"
 const url = "https://api.themoviedb.org/3"
-const nowPlayingUrl = `${url}/movie/now_playing`
-const topRatedUrl = `${url}/movie/top_rated`
+const posterUrl = 'https://image.tmdb.org/t/p/original/'
+const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&langauge=en_US&page=1`
 const movieUrl = `${url}/movie`
-const genreUrl = `${url}/genre/movie/list`
-const moviesUrl = `${url}/discover/movie`
-const personUrl = `${url}/trending/person/week`
+const genreUrl = `${url}/genre/movie/list?api_key=${apiKey}&langauge=en_US&page=1`
+const moviesUrl = `${url}/discover/movie?api_key=${apiKey}&langauge=en_US&page=1`
+const personUrl = `${url}/trending/person/week?api_key=${apiKey}`
 
 //Return trending movies
 export const fetchMovies = async () => {
     try {
-        const {data} = await axios.get(nowPlayingUrl, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US',
-                page: 1
-            }
-        })
-        const posterUrl = 'https://image.tmdb.org/t/p/original/'
+        const {data} = await axios.get(nowPlayingUrl)
         const modifiedData = data['results'].map(d => ({
             id: d['id'],
             backPoster: `${posterUrl}${d['background_path']}`,
@@ -39,13 +32,7 @@ export const fetchMovies = async () => {
 //Return relevant movie genres
 export const fetchGenre = async () => {
     try{
-        const {data} = await axios.get(genreUrl, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US',
-                page: 1
-            }
-        })
+        const {data} = await axios.get(genreUrl)
 
         const modifiedData = data['genres'].map(g => ({
             id: g['id'],
@@ -61,16 +48,12 @@ export const fetchGenre = async () => {
 //Return movies when genre is selected by genre_id
 export const fetchMovieByGenre = async (genre_id) => {
     try{
-        const {data} = await axios.get(moviesUrl, {
+        const {data} = await axios.get(`${moviesUrl}`, {
             params: {
-                api_key: apiKey,
-                language: 'en_US',
-                page: 1,
                 with_genres: genre_id
             }
         })
 
-        const posterUrl = 'https://image.tmdb.org/t/p/original/'
         const modifiedData = data['results'].map(d => ({
             id: d['id'],
             backPoster: `${posterUrl}${d['background_path']}`,
@@ -90,11 +73,7 @@ export const fetchMovieByGenre = async (genre_id) => {
 //Return relevant actors and directors
 export const fetchPersons = async () => {
     try{
-        const {data} = await axios.get(personUrl, {
-            params: {
-                api_key: apiKey
-            }
-        })
+        const {data} = await axios.get(personUrl)
 
         const modifiedData = data['results'].map(p => ({
             id: p['id'],
@@ -110,43 +89,10 @@ export const fetchPersons = async () => {
     }
 }
 
-//Return top rated movies
-export const fetchTopRatedMovies = async () => {
-    try{
-        const {data} = await axios.get(topRatedUrl, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US',
-                page: 1
-            }
-        })
-
-        const posterUrl = 'https://image.tmdb.org/t/p/original/'
-        const modifiedData = data['results'].map(d => ({
-            id: d['id'],
-            backPoster: `${posterUrl}${d['background_path']}`,
-            popularity: d['popularity'],
-            title: d['title'],
-            poster: `${posterUrl}${d['poster_path']}`,
-            overview: d['overview'],
-            rating: d['vote_average'],
-        }))
-        
-        return modifiedData
-    } catch(err){
-        console.log(err)
-    }
-}
-
 //Return movied details depending to movie id
 export const fetchMovieDetail = async (id) => {
     try{
-        const {data} = await axios.get(`${movieUrl}/${id}`, {
-            params: {
-                api_key: apiKey, 
-                language: 'en_US'
-            }
-        })
+        const {data} = await axios.get(`${movieUrl}/${id}?api_key=${apiKey}&language=en_US`)
         
         return data
     } catch(err){
@@ -158,11 +104,7 @@ export const fetchMovieDetail = async (id) => {
 //Return movie video - trailer
 export const fetchMovieVideos = async (id) => {
     try{
-        const {data} = await axios.get(`${movieUrl}/${id}/videos`, {
-            params: {
-                api_key: apiKey
-            }
-        })
+        const {data} = await axios.get(`${movieUrl}/${id}/videos?api_key=${apiKey}`)
 
         return data['results'][0]
     } catch(err){
@@ -173,17 +115,13 @@ export const fetchMovieVideos = async (id) => {
 //Return casts for a movie
 export const fetchCasts = async (id) => {
     try{
-        const {data} = await axios.get(`${movieUrl}/${id}/credits`, {
-            params: {
-                api_key: apiKey
-            }
-        })
+        const {data} = await axios.get(`${movieUrl}/${id}/credits?api_key=${apiKey}`)
 
         const modifiedData = data['cast'].map(cast => ({
             id: cast['cast_id'],
             character: cast['character'],
             name: cast['name'],
-            img: `https://image.tmdb.org/t/p/w200${cast['profile_path']}`
+            img: `${posterUrl}${cast['profile_path']}`
         }))
 
         return modifiedData
@@ -194,14 +132,8 @@ export const fetchCasts = async (id) => {
 
 export const fetchRecommendation = async (id) => {
     try{
-        const {data} = await axios.get(`${movieUrl}/${id}/similar`, {
-            params: {
-                api_key: apiKey,
-                language: 'en_US'
-            }
-        })
+        const {data} = await axios.get(`${movieUrl}/${id}/similar?api_key=${apiKey}&langauge=en_US`)
 
-        const posterUrl = 'https://image.tmdb.org/t/p/original/'
         const modifiedData = data['results'].map(d => ({
             id: d['id'],
             backPoster: `${posterUrl}${d['background_path']}`,
